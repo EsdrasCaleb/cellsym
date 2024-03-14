@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://vy61pn4jwqou"]
+
+[ext_resource type="PackedScene" uid="uid://cqaf61fruq82q" path="res://ui.tscn" id="1_kx5d8"]
+[ext_resource type="Script" path="res://Game.gd" id="1_wy2h1"]
+[ext_resource type="PackedScene" uid="uid://cbfw57cm2h2nr" path="res://PlantCell.tscn" id="2_2nq02"]
+
+[sub_resource type="Environment" id="Environment_rjbuj"]
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7yjw"]
+resource_name = "Material.006"
+cull_mode = 2
+albedo_color = Color(0.156863, 0.156863, 0.00392157, 1)
+roughness = 0.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jw7ob"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0sr6k"]
+resource_name = "plantcelll_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2.00001),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
+"material": SubResource("StandardMaterial3D_b7yjw"),
+"name": "Material.006",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 0, 0, 0, 0, 254, 255, 255, 191, 255, 255, 0, 0, 254, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jw7ob")
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_wy2h1")
+
+[node name="Control" parent="." instance=ExtResource("1_kx5d8")]
+
+[node name="PlantCell" parent="." instance=ExtResource("2_2nq02")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0601949, 0.998187, 0, -0.998187, 0.0601949, -1.18943, 5.20225, 1.31518)
+environment = SubResource("Environment_rjbuj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(0.261897, 0.960132, -0.0977553, -0.962662, 0.267083, 0.0441503, 0.0684988, 0.0825424, 0.994231, 0, 0, 0)
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(20.5335, 0, 0, 0, 74.7999, 0, 0, 0, 20.5335, 0, -1.01079, 0)
+mesh = SubResource("ArrayMesh_0sr6k")
+skeleton = NodePath("")
+
+[connection signal="selected_organ" from="Control" to="." method="_on_control_selected_organ"]
+[connection signal="set_active_organ" from="Control" to="." method="set_active"]

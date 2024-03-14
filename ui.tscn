@@ -1,0 +1,182 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqaf61fruq82q"]
+
+[ext_resource type="Script" path="res://ui_script.gd" id="1_it7rh"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_it7rh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -497.5
+offset_top = -324.0
+offset_right = 497.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Ressource1" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "ATP:"
+
+[node name="Val1" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ressource2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "Lipideos:"
+
+[node name="Val2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="VSeparator2" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ressource3" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "Proteinas:"
+
+[node name="Val3" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="VSeparator3" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ressource4" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "Glicose:"
+
+[node name="Val4" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="VSeparator4" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ressource5" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "CO2:"
+
+[node name="Val5" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="VSeparator5" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Ressource6" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 30
+text = "Residuos:"
+
+[node name="Val6" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.721569, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Goldi" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Complexo de Goldi"
+
+[node name="ReticL" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Reticulo Endoplasmatico Liso"
+
+[node name="ReticR" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Reticulo Endoplasmatico Rugoso"
+
+[node name="CloroPlasto" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Cloroplasto"
+
+[node name="Mitocondri" type="CheckButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Mitocondria"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="MenuButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Melhorar"
+item_count = 4
+popup/item_0/text = "Reticulo Endoplasmatico Liso"
+popup/item_0/id = 0
+popup/item_1/text = "Reticulo Endoplasmatico Rugoso"
+popup/item_1/id = 1
+popup/item_2/text = "Cloroplastos"
+popup/item_2/id = 2
+popup/item_3/text = "Mitocondrias"
+popup/item_3/id = 3
+
+[connection signal="disable_organ" from="." to="." method="_on_disable_organ"]
+[connection signal="set_ressources" from="." to="." method="_on_set_ressources"]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/Goldi" to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/Goldi" to="." method="_oni_focus_entered" binds= [1]]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/Goldi" to="." method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/Goldi" to="." method="_on_toggle" binds= [1]]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticL" to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticL" to="." method="_oni_focus_entered" binds= [2]]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticL" to="." method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticL" to="." method="_on_toggle" binds= [2]]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticR" to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticR" to="." method="_oni_focus_entered" binds= [3]]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticR" to="." method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/ReticR" to="." method="_on_toggle" binds= [3]]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/CloroPlasto" to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/CloroPlasto" to="." method="_oni_focus_entered" binds= [4]]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/CloroPlasto" to="." method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/CloroPlasto" to="." method="_on_toggle" binds= [4]]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/Mitocondri" to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer2/VBoxContainer/Mitocondri" to="." method="_oni_focus_entered" binds= [5]]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer2/VBoxContainer/Mitocondri" to="." method="_on_focus_exited"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer2/VBoxContainer/Mitocondri" to="." method="_on_toggle" binds= [5]]
